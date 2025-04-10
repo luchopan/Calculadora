@@ -1,0 +1,172 @@
+/* Fondo animado con tonos oscuros rosados y morados */
+body {
+  font-family: "Roboto", Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(
+    45deg,
+    #3b0d3e,
+    #4e0d56,
+    #6a1b9a,
+    #8e24aa,
+    #ff4081,
+    #ff80ab,
+    #ea80fc,
+    #b388ff,
+    #ea80fc,
+    #ff80ab,
+    #ff4081,
+    #8e24aa,
+    #6a1b9a,
+    #4e0d56,
+    #3b0d3e
+  );
+  background-size: 800% 800%;
+  animation: moverFondo 15s ease infinite;
+  color: #ffffff;
+  -webkit-animation: moverFondo 15s ease infinite;
+}
+
+/* Animación del fondo */
+@keyframes moverFondo {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 50% 75%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  75% {
+    background-position: 50% 25%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.calculadora {
+  background-color: #000000;
+  border: 2px solid;
+  border-color: white;
+  box-shadow: 0px 15px 80px 50px rgba(0, 0, 0, 0.5);
+  width: 360px;
+  max-width: 90%;
+}
+
+#resultado {
+  height: 150px;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  padding: 100px 15px 10px 15px; /* top, right, bottom, left */
+  border: none;
+  background-color: #1c1c1e;
+  color: #ffffff;
+  text-align: right;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  box-sizing: border-box;
+
+  /* Esto ayuda a centrar una sola línea de texto si se usa con padding-top */
+  line-height: normal;
+}
+
+.botones {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px;
+  padding: 15px;
+}
+
+button {
+  font-size: 1.5em;
+  border: none;
+  border-radius: 15px;
+  padding: 10px;
+  background-color: #33333300;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  position: relative; /* Necesario para posicionar el pseudo-elemento */
+  overflow: hidden; /* Oculta la onda fuera del botón */
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.5);
+  /*Colordelaonda*/
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 3s ease, height 0.5s ease, opacity 0.5s ease;
+}
+
+button:active {
+  background-color: #555555;
+  transform: scale(0.95);
+}
+
+button.operador {
+  color: #f39c12;
+}
+
+button.operador:hover {
+  color: #d87d00;
+}
+
+button.operador:active {
+  color: #bf6d00;
+}
+
+button.igual {
+  color: #007aff;
+  font-size: 1.5em;
+  border-radius: 10px;
+}
+
+button.igual:hover {
+  color: #005ecb;
+}
+
+button.igual:active {
+  color: #004a9f;
+}
+
+button.clear {
+  color: #ff3b30;
+}
+
+button.clear:hover {
+  color: #e62e25;
+}
+
+button.clear:active {
+  color: #cc271f;
+}
+
+@media (max-width: 400px) {
+  button {
+    font-size: 1.2em;
+    padding: 10px;
+  }
+
+  #resultado {
+    font-size: 1.8em;
+  }
+
+  .calculadora {
+    margin: 15px; /* Añade un margen para separar la calculadora de los bordes */
+  }
+}
